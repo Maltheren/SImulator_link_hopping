@@ -2,6 +2,7 @@ from Classes import Node
 import numpy as np
 import numpy.typing as npt
 import pandas as pd
+from typing import Tuple        ##Bruger vi så vi kan få syntax highlighting
 
 
 class Simulator:
@@ -18,7 +19,7 @@ class Simulator:
             drone.update_pos(t)
     
 
-    def evaluate_links(self) -> pd.DataFrame:
+    def evaluate_links(self) -> Tuple[list[str], list[str], list[float], list[float]]:
         allies = (self.drones+ self.ground_stations)
         name_rx, name_tx, snr, rssi = ([],[],[],[]) #Ik så meget andet end en skør måde at lave 4 arrays
 
