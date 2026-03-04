@@ -130,9 +130,9 @@ if __name__ == "__main__":
 
     ##Parametre vi skal teste
     #num_helpers = range(6) ##Bruger vi ik
-    Drones = [ Node("dir", "./path/Bench_path.csv", SDA(180, 15, 0.05), tx_power=20)] #Node("iso", "./path/Bench_path.csv", SDA(1), tx_power=20 ),
+    Drones = [ Node("dir", "./path/Bench_path.csv", SDA(360, 15, 0.05), tx_power=20)] #Node("iso", "./path/Bench_path.csv", SDA(1), tx_power=20 ),
     seeds = np.arange(300)
-    N_helper_drones = np.arange(5)
+    N_helper_drones = np.arange(8)
 
     inputs = []
     for seed, Drone, helpers in product(seeds, Drones, N_helper_drones):
@@ -191,7 +191,7 @@ if __name__ == "__main__":
     print(df[df["drone_names"] == "iso"].head(20))
     print(df[df["drone_names"] == "dir"].head(20))
 
-    df.to_csv("output_w_helpers_increased_spawn.csv")
+    df.to_csv("output_w_helpers_increased_spawn_tight.csv")
 
     
 

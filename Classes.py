@@ -124,9 +124,9 @@ class Node:
 
     def getDIR2Target(self, target: npt.NDArray[np.floating] | Node) -> npt.NDArray[np.floating]:
         if type(target) is Node:
-            return getDist2Target_numba(self.pos, target.getPos())
+            return getDIR2Target(self.pos, target.getPos())
         else:
-            return getDist2Target_numba(self.pos, target)
+            return getDIR2Target(self.pos, target)
     
 
     def getDist2Target (self, target: npt.NDArray[np.floating] | Node) -> np.floating:

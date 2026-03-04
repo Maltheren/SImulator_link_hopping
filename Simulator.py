@@ -36,7 +36,7 @@ class Simulator:
                 snr.append(channel_snr)
                 rssi.append(channel_rssi)
         
-        return (name_rx, name_tx, snr, rssi)
+        return (np.array(name_rx), np.array(name_tx), np.array(snr), np.array(rssi))
 
 
 

@@ -30,7 +30,7 @@ class SDA:
         n = int(np.ceil(n)) # Round up to the nearest integer
         
 
-        return np.cos((theta-self.closest_theta)/2)**n * np.cos(phi/2)**n +self.Beta
+        return np.abs(np.cos((theta-self.closest_theta)/2))**n * np.abs(np.cos(phi/2))**n +self.Beta
 
     def set_dir(self, theta: np.floating):
         '''
@@ -49,17 +49,17 @@ class SDA:
 
 
 if __name__ == "__main__":
-    Antenna = SDA(Granularity=3)
+    Antenna = SDA(Granularity=1, HPBW=90, Beta=0.0)
     theta_test = np.pi /4  # Example theta
     phi_test = np.pi / 4    # Example phi
     print(Antenna.Antenna_directions)
     
 
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={'projection': 'polar'})
-    test_sweep = np.linspace(-np.pi, np.pi, Antenna.Granularity+1)
+    test_sweep = np.linspace(0, 2*np.pi, Antenna.Granularity+1)
     for theta in test_sweep:
         Antenna.set_dir(theta)
-        theta_sweep = np.linspace(-np.pi, 3*np.pi, 4000)
+        theta_sweep = np.linspace(0, 2*np.pi, 4000)
         gains = []
         
         # Calculate gain for each theta angle
@@ -79,4 +79,3 @@ if __name__ == "__main__":
     ax.set_ylim(-20, 5)
 
     plt.show()
-
